@@ -24,18 +24,8 @@ resource "aws_route_table" "pb_rt" {
 ###################                              ############################
 
 
-resource "aws_route_table_association" "pb_rt_assoc_pb1" {
-  subnet_id      = aws_subnet.pb_sn_az1.id
+resource "aws_route_table_association" "pb_rt_assoc" {
+  for_each = toset(data.aws_availability_zones.available_zones.names)
+  subnet_id      = aws_subnet.pb_sn[each.key].id
   route_table_id = aws_route_table.pb_rt.id
 }
-
-resource "aws_route_table_association" "pb_rt_assoc_pb2" {
-  subnet_id      = aws_subnet.pb_sn_az2.id
-  route_table_id = aws_route_table.pb_rt.id
-}
-
-resource "aws_route_table_association" "pb_rt_assoc_pb3" {
-  subnet_id      = aws_subnet.pb_sn_az3.id
-  route_table_id = aws_route_table.pb_rt.id
-}
-#------------------------------------------------------------
