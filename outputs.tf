@@ -60,5 +60,5 @@ output "pvt_sn_db_id" {
 # ######################################################################3
 
 output "aws_db_instance" {
-  value = aws_db_instance.rds_cluster.id
+  value = aws_db_instance.rds_cluster.endpoint
 }
