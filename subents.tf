@@ -36,7 +36,7 @@ locals {
 #############################             ##################################
 
 
-# Creating public subnets in AZ1
+# Creating public subnets in all 3 AZs
 resource "aws_subnet" "pb_sn" {
   for_each                = toset(data.aws_availability_zones.available_zones.names)
   vpc_id                  = aws_vpc.main_vpc.id
@@ -53,7 +53,7 @@ resource "aws_subnet" "pb_sn" {
 ########################App Private Subnet##################################
 ########################                  ##################################
 
-# Creating Private app subnets in AZ1
+# Creating Private app subnets in all 3 AZs
 resource "aws_subnet" "pvt_sn_app" {
   for_each                = toset(data.aws_availability_zones.available_zones.names)
   vpc_id                  = aws_vpc.main_vpc.id
@@ -71,7 +71,7 @@ resource "aws_subnet" "pvt_sn_app" {
 ############################DB Private Subnet##############################
 ############################                 ##############################
 
-# creating private db subnet in AZ1
+# creating private db subnet in all 3 AZs
 resource "aws_subnet" "pvt_sn_db" {
   for_each                = toset(data.aws_availability_zones.available_zones.names)
   vpc_id                  = aws_vpc.main_vpc.id
