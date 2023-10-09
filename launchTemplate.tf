@@ -53,5 +53,5 @@ resource "aws_launch_template" "ec2_launch_template" {
     name = aws_iam_instance_profile.instance_profile.name
   }
 
-  #  user_data = base64encode(file("script.sh"))
+  user_data = base64encode(file("script.sh"))
 }
