@@ -10,7 +10,7 @@ resource "aws_lb" "lb" {
   ]
   enable_deletion_protection = false
   security_groups            = [aws_security_group.SGLB.id]
-
+  depends_on = [ aws_internet_gateway.internet_gateway ]
 }
 
 # Configuring ALB Listener
