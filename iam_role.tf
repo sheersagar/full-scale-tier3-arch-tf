@@ -21,7 +21,7 @@ resource "aws_iam_role" "ec2_instance_role" {
 # Create profile to attach role to.
 resource "aws_iam_instance_profile" "instance_profile" {
   name_prefix = "PB-SN-Profile"
-  role = aws_iam_role.ec2_instance_role.name
+  role        = aws_iam_role.ec2_instance_role.name
 }
 
 # ATTACHING POLICIES TO EC2_INSTANCE ROLE

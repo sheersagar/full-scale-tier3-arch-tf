@@ -46,7 +46,7 @@ resource "aws_launch_template" "ec2_launch_template" {
 
   # The parameter groupName cannot be used with the parameter subnet
   # Error was caused by using security_group_names and not vpc_security_group_ids
-  vpc_security_group_ids = [ aws_security_group.SGpublicSN.id ]
+  vpc_security_group_ids = [aws_security_group.SGpublicSN.id]
 
   # Attach instance profile, _not_ role!
   iam_instance_profile {
