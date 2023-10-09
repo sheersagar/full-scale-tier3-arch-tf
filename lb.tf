@@ -2,10 +2,12 @@
 
 # Creating Load Balancer
 resource "aws_lb" "lb" {
-  name                       = "LB-Demo"
-  internal                   = false # It means it is internet facing
-  load_balancer_type         = "application"
-  subnets                    = var.subnet_ids_pb_sn
+  name               = "LB-Demo"
+  internal           = false # It means it is internet facing
+  load_balancer_type = "application"
+  subnets = [
+    for s in aws_subnet.pb_sn : s.id
+  ]
   enable_deletion_protection = false
   security_groups            = [aws_security_group.SGLB.id]
 
