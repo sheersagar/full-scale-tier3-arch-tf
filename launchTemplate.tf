@@ -24,12 +24,12 @@ resource "aws_key_pair" "generated_key" {
 # Save the keys to home directory (user profile on Windows)
 resource "local_sensitive_file" "private_key" {
   content  = tls_private_key.pk.private_key_pem
-  filename = "~/full-scale-tier3-arch-pvt.pem"
+  filename = "~/.ssh/full-scale-tier3-arch-pvt.pem"
 }
 
 resource "local_sensitive_file" "public_key" {
   content  = tls_private_key.pk.public_key_pem
-  filename = "~/full-scale-tier3-arch-pub.pem"
+  filename = "~/.ssh/full-scale-tier3-arch-pub.pem"
 }
 
 #Creating a Launch Template to create EC2 Instances
