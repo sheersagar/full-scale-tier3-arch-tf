@@ -13,7 +13,7 @@ resource "aws_autoscaling_group" "asg_demo" {
   }
 
   vpc_zone_identifier = [
-    for s in aws_subnet.pvt_sn_db : s.id
+    for s in aws_subnet.pvt_sn_app : s.id
   ]
 
   target_group_arns         = [aws_lb_target_group.ec2.arn]
