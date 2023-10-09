@@ -11,7 +11,7 @@ data "aws_availability_zones" "available_zones" {
   }
 }
 
-# Generate CIDR ranges for all the subnetsw
+# Generate CIDR ranges for all the subnets
 locals {
   cidr_ranges_pub_sn = {
     "${var.region}a" = cidrsubnet("10.16.0.0/16", 8, 0)
@@ -38,7 +38,7 @@ locals {
 
 # Creating public subnets in AZ1
 resource "aws_subnet" "pb_sn" {
-  for_each = toset(data.aws_availability_zones.available_zones.names)
+  for_each                = toset(data.aws_availability_zones.available_zones.names)
   vpc_id                  = aws_vpc.main_vpc.id
   cidr_block              = local.cidr_ranges_pub_sn[each.key]
   availability_zone       = each.key
@@ -54,11 +54,11 @@ resource "aws_subnet" "pb_sn" {
 ########################                  ##################################
 
 # Creating Private app subnets in AZ1
-resource "aws_subnet" "pvt_sn_app_az1" {
-  for_each = toset(data.aws_availability_zones.available_zones.names)
+resource "aws_subnet" "pvt_sn_app" {
+  for_each                = toset(data.aws_availability_zones.available_zones.names)
   vpc_id                  = aws_vpc.main_vpc.id
   cidr_block              = local.cidr_ranges_pvt_sn[each.key]
-  availability_zone       = data.aws_availability_zones.available_zones.names[0]
+  availability_zone       = each.key
   map_public_ip_on_launch = false
 
   tags = {
@@ -72,11 +72,11 @@ resource "aws_subnet" "pvt_sn_app_az1" {
 ############################                 ##############################
 
 # creating private db subnet in AZ1
-resource "aws_subnet" "pvt_sn_db_az1" {
-  for_each = toset(data.aws_availability_zones.available_zones.names)
+resource "aws_subnet" "pvt_sn_db" {
+  for_each                = toset(data.aws_availability_zones.available_zones.names)
   vpc_id                  = aws_vpc.main_vpc.id
   cidr_block              = local.cidr_ranges_db_sn[each.key]
-  availability_zone       = data.aws_availability_zones.available_zones.names[0]
+  availability_zone       = each.key
   map_public_ip_on_launch = false
 
   tags = {
