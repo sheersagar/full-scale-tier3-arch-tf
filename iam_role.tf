@@ -3,7 +3,7 @@ resource "aws_iam_role" "ec2_instance_role" {
   name = "PB-SN-EC2-ROLE"
 
   # The actual policy in json
-  
+
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
@@ -18,6 +18,11 @@ resource "aws_iam_role" "ec2_instance_role" {
   })
 }
 
+# Create profile to attach role to.
+resource "aws_iam_instance_profile" "instance_profile" {
+  name_prefix = "PB-SN-Profile"
+  role = aws_iam_role.ec2_instance_role.name
+}
 
 # ATTACHING POLICIES TO EC2_INSTANCE ROLE
 
