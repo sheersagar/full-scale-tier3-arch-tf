@@ -34,13 +34,13 @@ resource "aws_ssm_parameter" "rds_parameter_db_name" {
   value       = var.initial_db_name # Used in Additional setting to set up Initial database name
 }
 
-# Creating Endpoint Parameter for RDS Database to get connected
-resource "aws_ssm_parameter" "rds_endpoint" {
-  name        = "/Infrastructure/Demo/DBEndpoint"
-  description = "The Endpoint of the rds data base"
-  type        = "String"
-  value       = aws_rds_cluster_instance.rds_instance.endpoint
-}
+# # Creating Endpoint Parameter for RDS Database to get connected
+# resource "aws_ssm_parameter" "rds_endpoint" {
+#   name        = "/Infrastructure/Demo/DBEndpoint"
+#   description = "The Endpoint of the rds data base"
+#   type        = "String"
+#   value       = aws_rds_cluster_instance.rds_instance.endpoint
+# }
 
 # Creating parameter for EFS FSID
 resource "aws_ssm_parameter" "efs_fs_id" {
@@ -50,10 +50,10 @@ resource "aws_ssm_parameter" "efs_fs_id" {
   value       = aws_efs_file_system.efs.id
 }
 
-# Creating parameter for ALB dns name 
-resource "aws_ssm_parameter" "alb_dns" {
-  name        = "/Infrastructure/Demo/ALBDNSName"
-  description = "DNS name of ALB"
-  type        = "String"
-  value       = aws_lb.lb.dns_name # DNS Name of ALB created
-}
+# # Creating parameter for ALB dns name 
+# resource "aws_ssm_parameter" "alb_dns" {
+#   name        = "/Infrastructure/Demo/ALBDNSName"
+#   description = "DNS name of ALB"
+#   type        = "String"
+#   value       = aws_lb.lb.dns_name # DNS Name of ALB created
+# }
