@@ -15,97 +15,50 @@ output "internet_gateway" {
 }
 
 
-#$$$$$$$$$$$$$$$$$$$$$$$$$  CIDR Output $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-#$$$$$$$$$$$$$$$$$$$$$$$$$              $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+# #$$$$$$$$$$$$$$$$$$$$$$$$$  CIDR Output $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+# #$$$$$$$$$$$$$$$$$$$$$$$$$              $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-output "pb_sn_az1_cidr" {
-  value = var.pb_sn_az1_cidr
+output "pb_sn_cidr" {
+  value = [for s in aws_subnet.pb_sn : s.cidr_block]
 }
 
-output "pb_sn_az2_cidr" {
-  value = var.pb_sn_az2_cidr
+# #------------------------------
+
+output "pvt_sn" {
+  value = [for s in aws_subnet.pvt_sn_app : s.cidr_block]
 }
 
-output "pb_sn_az3_cidr" {
-  value = var.pb_sn_az3_cidr
+# #------------------------------
+
+output "pvt_sn_db" {
+  value = [for s in aws_subnet.pvt_sn_db : s.cidr_block]
 }
 
-#------------------------------
-
-output "pvt_sn_app_az1_cidr" {
-  value = var.pvt_sn_app_az1_cidr
-}
-
-output "pvt_sn_app_az2_cidr" {
-  value = var.pvt_sn_app_az2_cidr
-}
-
-output "pvt_sn_app_az3_cidr" {
-  value = var.pvt_sn_app_az3_cidr
-}
-
-#------------------------------
-
-output "pvt_sn_db_az1_cidr" {
-  value = var.pvt_sn_db_az1_cidr
-}
-
-output "pvt_sn_db_az2_cidr" {
-  value = var.pvt_sn_db_az2_cidr
-}
-
-output "pvt_sn_db_az3_cidr" {
-  value = var.pvt_sn_db_az3_cidr
-}
-
-##################################################################################
-# Subnet IDs
-#################################################################################
+# ##################################################################################
+# # Subnet IDs
+# #################################################################################
 
 output "pb_sn_az1_id" {
-  value = aws_subnet.pb_sn_az1.id
-}
-
-output "pb_sn_az2_id" {
-  value = aws_subnet.pb_sn_az2.id
-}
-
-output "pb_sn_az3_id" {
-  value = aws_subnet.pb_sn_az3.id
+  value = [for s in aws_subnet.pb_sn : s.id]
 }
 
 #------------------------
 
-output "pvt_sn_app_az1_id" {
-  value = aws_subnet.pvt_sn_app_az1.id
-}
-
-output "pvt_sn_app_az2_id" {
-  value = aws_subnet.pvt_sn_app_az2.id
-}
-
-output "pvt_sn_app_az3_id" {
-  value = aws_subnet.pvt_sn_app_az3.id
+output "pvt_sn_app_id" {
+  value = [for s in aws_subnet.pvt_sn_app : s.id]
 }
 
 #-----------------------
 
-output "pvt_sn_db_az1_id" {
-  value = aws_subnet.pvt_sn_db_az1.id
+output "pvt_sn_db_id" {
+  value = [for s in aws_subnet.pvt_sn_db : s.id]
 }
 
-output "pvt_sn_db_az2_id" {
-  value = aws_subnet.pvt_sn_db_az2.id
-}
 
-output "pvt_sn_db_az3_id" {
-  value = aws_subnet.pvt_sn_db_az3.id
-}
+# ######################################################################
+# # RDS
+# ######################################################################3
 
-######################################################################
-# RDS
-######################################################################3
-
-output "rds_cluster_endpoint" {
-  value =  aws_rds_cluster.rds_cluster.endpoint
+output "aws_db_instance" {
+  value = aws_db_instance.rds_cluster.id
 }
