@@ -16,8 +16,8 @@ resource "aws_autoscaling_group" "asg_demo" {
     for s in aws_subnet.pvt_sn_db : s.id
   ]
 
-  #target_group_arns         = [aws_lb_target_group.ec2.arn]
-  health_check_type         = "EC2"
+  target_group_arns         = [aws_lb_target_group.ec2.arn]
+  health_check_type         = "ELB"
   health_check_grace_period = 300
-  
+
 }
