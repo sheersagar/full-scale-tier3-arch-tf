@@ -21,12 +21,3 @@ variable "efs_full_access" {}
 variable "master_user_name" {}
 variable "master_password" {}
 variable "initial_db_name" {}
-
-#############################################################################
-# RDS Related
-#############################################################################
-
-variable "rds_cluster_endpoint" {
-  description = "rds_cluster_endpoint"
-  type        = string
-}
