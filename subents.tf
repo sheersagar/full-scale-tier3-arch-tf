@@ -14,21 +14,21 @@ data "aws_availability_zones" "available_zones" {
 # Generate CIDR ranges for all the subnets
 locals {
   cidr_ranges_pub_sn = {
-    "${var.region}a" = cidrsubnet("10.16.0.0/16", 8, 0)
-    "${var.region}b" = cidrsubnet("10.16.0.0/16", 8, 1)
-    "${var.region}c" = cidrsubnet("10.16.0.0/16", 8, 2)
+    "${var.region}a" = cidrsubnet(var.vpc_cidr, 8, 0)
+    "${var.region}b" = cidrsubnet(var.vpc_cidr, 8, 1)
+    "${var.region}c" = cidrsubnet(var.vpc_cidr, 8, 2)
   }
 
   cidr_ranges_pvt_sn = {
-    "${var.region}a" = cidrsubnet("10.16.0.0/16", 8, 3)
-    "${var.region}b" = cidrsubnet("10.16.0.0/16", 8, 4)
-    "${var.region}c" = cidrsubnet("10.16.0.0/16", 8, 5)
+    "${var.region}a" = cidrsubnet(var.vpc_cidr, 8, 3)
+    "${var.region}b" = cidrsubnet(var.vpc_cidr, 8, 4)
+    "${var.region}c" = cidrsubnet(var.vpc_cidr, 8, 5)
   }
 
   cidr_ranges_db_sn = {
-    "${var.region}a" = cidrsubnet("10.16.0.0/16", 8, 6)
-    "${var.region}b" = cidrsubnet("10.16.0.0/16", 8, 7)
-    "${var.region}c" = cidrsubnet("10.16.0.0/16", 8, 8)
+    "${var.region}a" = cidrsubnet(var.vpc_cidr, 8, 6)
+    "${var.region}b" = cidrsubnet(var.vpc_cidr, 8, 7)
+    "${var.region}c" = cidrsubnet(var.vpc_cidr, 8, 8)
   }
 }
 
