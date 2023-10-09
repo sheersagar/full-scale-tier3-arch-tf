@@ -20,4 +20,10 @@ resource "aws_autoscaling_group" "asg_demo" {
   health_check_type         = "ELB"
   health_check_grace_period = 300
 
+  # Ensure EFS is created and RDS is created
+  # and endpoint ready prior to launching ASG instances
+  depends_on = [
+    aws_ssm_parameter.rds_endpoint,
+    aws_ssm_parameter.efs_parameter
+  ]
 }
