@@ -1,0 +1,8 @@
+# Terraform lock and providers
+.terraform*
+
+# Generated key material
+*.pem
+
+# State files
+terraform.tfstate*

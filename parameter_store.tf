@@ -39,7 +39,7 @@ resource "aws_ssm_parameter" "rds_endpoint" {
   name        = "/Infrastructure/Demo/DBEndpoint"
   description = "The Endpoint of the rds data base"
   type        = "String"
-  value       = aws_rds_cluster_instance.rds_instance.endpoint
+  value       = aws_db_instance.rds_cluster.endpoint
 }
 
 # Creating parameter for EFS FSID
@@ -50,7 +50,7 @@ resource "aws_ssm_parameter" "efs_fs_id" {
   value       = aws_efs_file_system.efs.id
 }
 
-# Creating parameter for ALB dns name 
+# Creating parameter for ALB dns name
 resource "aws_ssm_parameter" "alb_dns" {
   name        = "/Infrastructure/Demo/ALBDNSName"
   description = "DNS name of ALB"
