@@ -19,6 +19,14 @@ resource "aws_iam_role" "ec2_instance_role" {
 }
 
 
+# Creating Profile (Which will attach role)
+resource "aws_iam_instance_profile" "instance_profile" {
+  name_prefix = "PB-SN-EC2-Profile"
+  role = aws_iam_role.ec2_instance_role.name
+}
+
+
+
 # ATTACHING POLICIES TO EC2_INSTANCE ROLE
 
 resource "aws_iam_policy_attachment" "cloud_watch_policy" {

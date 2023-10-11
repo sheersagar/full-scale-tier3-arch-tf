@@ -39,7 +39,7 @@ efs_full_access      = "arn:aws:iam::aws:policy/AmazonElasticFileSystemFullAcces
 ############################################################################
 
 master_user_name     = "a4lwordpressuser"
-master_password      = "VishvDeshwal@1234567890"
+master_password      = "VishvDeshwal1234567890"
 initial_db_name      = "a4lwordpressuserdb"
 
 
@@ -48,21 +48,21 @@ initial_db_name      = "a4lwordpressuserdb"
 #############################################################################
 
 subnet_ids_pb_sn = [
-    "subnet-0b1c4af9e87df5136",
-    "subnet-0831f92674766cc10",
-    "subnet-0824128e2316de411"
+    "subnet-017f0c2086e2c3cd3",
+    "subnet-0d594f67d22390284",
+    "subnet-0dbeb33959610c924"
 ]
 
 subnet_ids_pvt_sn_app = [
-    "subnet-084253b232e47dfd2",
-    "subnet-072ee4be3058cb25c",
-    "subnet-0df5804df202189ca"
+    "subnet-03133c6ef657db7b6",
+    "subnet-03eb7ef52c84947f7",
+    "subnet-01b4ee7fb495d9b9e"
 ]
 
 subnet_ids_pvt_sn_db = [
-    "subnet-083da77277169c505",
-    "subnet-0e244030e8a9ed152",
-    "subnet-030ab52699f9e8dba"
+    "subnet-0cd57fec23b81d0b2",
+    "subnet-016d88df0b8023778",
+    "subnet-0b05ba5b98ceb1a1a"
 ]
 
 

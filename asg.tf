@@ -21,6 +21,13 @@ launch_template {
     ]
 
   target_group_arns         = [aws_lb_target_group.ec2.arn]
-  health_check_type         = "EC2"
+  health_check_type         = "ELB"
   health_check_grace_period = 300
+
+  # ASG Dependencies
+    # Ensure EFS and RDS is created first
+  depends_on = [
+    aws_ssm_parameter.rds_endpoint,
+    aws_ssm_parameter.efs_parameter
+   ]
 }

@@ -1,0 +1,6 @@
+# Ignoring specific files
+
+terraform.tfstate.backup
+terraform.tfstate
+*.log
+.terraform/

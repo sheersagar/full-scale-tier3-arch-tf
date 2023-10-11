@@ -105,7 +105,3 @@ output "pvt_sn_db_az3_id" {
 ######################################################################
 # RDS
 ######################################################################3
-
-output "rds_cluster_endpoint" {
-  value =  aws_rds_cluster.rds_cluster.endpoint
-}

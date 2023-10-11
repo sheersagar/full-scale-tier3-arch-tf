@@ -10,10 +10,10 @@ resource "aws_launch_template" "ec2_launch_template" {
     cpu_credits = "standard"
   }
 
-  security_group_names = [aws_security_group.SGpublicSN.id]
+  vpc_security_group_ids = [aws_security_group.SGpublicSN.id]
 
   iam_instance_profile {
-    name = aws_iam_role.ec2_instance_role.name
+    name = aws_iam_instance_profile.instance_profile.name
   }
 
   user_data = base64encode(file("script.sh"))

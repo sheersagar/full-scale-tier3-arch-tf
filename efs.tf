@@ -16,8 +16,14 @@ resource "aws_efs_file_system" "efs" {
 
 # Mounting this efs in VPC and subnets
 resource "aws_efs_mount_target" "efs_mount" {
-  count           = length(var.subnet_ids_pvt_sn_app)                                            # Setting 'count' argument for the aws_efs_mount_target resource and make sure that count.index is used correctly within block
+  #count           = length(var.subnet_ids_pvt_sn_app)                                            # Setting 'count' argument for the aws_efs_mount_target resource and make sure that count.index is used correctly within block
   file_system_id  = aws_efs_file_system.efs.id
+
+  #subnet_id = [
+   # aws_subnet.pvt_sn_app_az1.id,
+    #aws_subnet.pvt_sn_app_az2.id,
+    #aws_subnet.pvt_sn_app_az3.id
+  #]
   subnet_id       = var.subnet_ids_pvt_sn_app[count.index]
   security_groups = [aws_security_group.SGpvtapp.id]
 }

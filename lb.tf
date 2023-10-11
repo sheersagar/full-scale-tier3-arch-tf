@@ -5,10 +5,16 @@ resource "aws_lb" "lb" {
   name                       = "LB-Demo"
   internal                   = false # It means it is internet facing
   load_balancer_type         = "application"
-  subnets                    = var.subnet_ids_pb_sn
+  subnets = [
+    aws_subnet.pb_sn_az1.id,
+    aws_subnet.pb_sn_az2.id,
+    aws_subnet.pb_sn_az3.id
+  ]
+  #subnets                    = var.subnet_ids_pb_sn
   enable_deletion_protection = false
   security_groups            = [aws_security_group.SGLB.id]
 
+  depends_on = [ aws_internet_gateway.internet_gateway ]
 }
 
 # Configuring ALB Listener
